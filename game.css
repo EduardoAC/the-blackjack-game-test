@@ -2,39 +2,75 @@
     Created on : 03-mar-2016, 18:52:47
     Author     : EduardoAC <Eduardo Aparicio Cardenes at Dream Maker Factory>
 */
+
+body{
+    background: #287B59;
+}
 h1,p{
     text-align: center;
     margin-bottom: 5px;
 }
 .game-table{
-    width: 500px;
-    height: 500px;
+    /* width: 500px; */
+    /* height: 500px; */
     margin: auto;
 }
 .dealer{
     font-size: 20px;
-    width: 100px;
+    width: 500px;
     margin: auto;
 }
 
 .player{
     font-size: 20px;
-    width: 100px;
+    width: 500px;
     margin: auto;
 }
 
-.table{
-    border-radius: 100px;
-    width: 400px;
-    height: 200px;
-    margin: auto;
-    background: #287B59;
-    border: 1px solid #056B42;
+.player > .actions{
+    width: 100px;
+    margin: 0 auto;
 }
-.table p{
+
+.hand{
     text-align: center;
-    margin: 90px 0;
+    margin: 10px 0;
+}
+
+.table p, .player p, .dealer p{
+    margin: 5px 0;
+}
+/*
+* Spacing of the sprite in 
+*   - X = -73px
+*   - Y = -98px
+*/
+.card{
+    background-image: url("images/blackjack_deck.png");
+    background-repeat: no-repeat;
+    background-position: 0px 0px;
+    width: 73px;
+    height: 97px;
+    display: inline-block;
+    /* float: left; */
+}
+.card.hidden{
+    background: -webkit-repeating-linear-gradient(39deg, #606dbc, #606dbc 10px, #465298 10px, #465298 20px);
+    background: repeating-linear-gradient(39deg, #606dbc, #606dbc 10px, #465298 10px, #465298 20px);
+    border: 5px solid white;
+    width: 63px;
+    height: 87px;
+}
+.table{
+    /* width: 400px; */
+    /* height: 200px; */
+    margin: auto;
+}
+.table .message{
+    text-align: center;
     font-size: 24px;
     color: white;
     font-weight: bold;
+    min-height: 27px;
+    padding: 30px 0;
 }

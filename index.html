@@ -17,18 +17,22 @@ and open the template in the editor.
         <section class="game-table">
             <div class="dealer" id="dealer">
                 <p>Dealer</p>
-                <p class="score">Score: <span id="count-dealer"></span></p>
-                <ul class="cards"></ul>
             </div>
             <div class="table">
-                <p id="messaje"></p>
+                <p class="score">Score: <span id="count-dealer"></span></p>
+                <div class="hand" id="dealer-cards"></div>
+                
+                <p class="message" id="message"></p>
+                
+                <div class="hand" id="player-cards"></div>
+                <p class="score">Score: <span id="count-player"></span></p>
             </div>
             <div class="player">
-                <ul class="cards"></ul>
-                <p class="score">Score: <span id="count-player"></span></p>
                 <p>Player</p>
-                <button class="hit" id="hit">HIT</button>
-                <button class="stick" id="stick">STICK</button>
+                <div class="actions">
+                    <button class="hit" id="hit">HIT</button>
+                    <button class="stick" id="stick">STICK</button>
+                </div>
             </div>
         </section>
         <script src="js/card.class.js"></script>
