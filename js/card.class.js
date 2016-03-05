@@ -8,6 +8,7 @@
 function Card(suit, number) {
     this.suit = suit;
     this.number = number;
+    this.hidden = false;
 }
 
 /**
@@ -17,13 +18,13 @@ function Card(suit, number) {
  */
 Card.prototype.value = function () {
     var realValue = this.number;
-    
+
     //The figures have 10 value all of them
-    if(realValue > 10){
+    if (realValue > 10) {
         realValue = 10;
     }
     //If we got an As the value that truly have is initialy 11
-    if(realValue === 1){
+    if (realValue === 1) {
         realValue = 11;
     }
 
@@ -35,6 +36,35 @@ Card.prototype.value = function () {
  * Return if this card is an As
  * @returns {Boolean}
  */
-Card.prototype.isAs = function(){
+Card.prototype.isAs = function () {
     return this.number === 1;
 }
+/**
+ * function getBackgroundPosition
+ * Return position based in suit and card number
+ * @returns {Array}
+ */
+Card.prototype.getBackgroundPosition = function () {
+    // X offset of the sprite is -73px * i
+    var xPosition = -73 * (this.number - 1); // We start on As that is 0 offset
+    // Y offset of the sprite is -98px * i
+    var yPosition = -98 * this.suit;
+
+    return [xPosition, yPosition];
+};
+
+/**
+ * function hide
+ * Hide the card number and suit
+ */
+Card.prototype.hide = function(){
+    this.hidden = true;
+};
+/**
+ * function isHidden
+ * return if the card is hidden
+ * @returns {Boolean}
+ */
+Card.prototype.isHidden = function(){
+    return this.hidden;
+};

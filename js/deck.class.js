@@ -22,7 +22,7 @@ Deck.prototype.createDeck = function () {
         //Group 1: spades
         //Group 2: hearts
         //Group 3: diamonds
-        var group = Math.floor(i / 13) + 1;
+        var group = Math.floor(i / 13);
 
         var value = i % 13 + 1;
 

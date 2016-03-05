@@ -1,19 +1,3 @@
-var getRandomMinMax = function (min, max) {
-    return Math.floor(Math.random() * (max - min + 1)) + min
-};
-
-function Dealer(hand) {
-    this.hand = hand;
-}
-
-Dealer.prototype.makeHand = function () {
-    var value = getRandomMinMax(1, 21);
-
-    while (this.hand.getScore() < value) {
-        this.hand.hit();
-    }
-};
-
 (function () {
     var deck = new Deck();
 
@@ -22,45 +6,62 @@ Dealer.prototype.makeHand = function () {
 
     var playerHand  = new Hand(deck);
     var dealerHand  = new Hand(deck);
-    var dealer      = new Dealer(dealerHand);
     var finished    = false;
-    var restartGame = function(){
-        deck.createDeck();
-        document.getElementById("messaje").innerHTML = "";
-        playerHand.emptyHand();
-        dealerHand.emptyHand();
-        document.getElementById("count-dealer").innerHTML = dealerHand.getScore();
+    
+    var paintHands = function(forceVisible){
+        document.getElementById("count-dealer").innerHTML = dealerHand.getScore(forceVisible);
+        document.getElementById("dealer-cards").innerHTML = dealerHand.showHand(forceVisible);
         document.getElementById("count-player").innerHTML = playerHand.getScore();
+        document.getElementById("player-cards").innerHTML = playerHand.showHand();
+    };
+    
+    var startGame = function(){
+        deck.createDeck();
+        deck.shuffle();
+        document.getElementById("message").innerHTML = "";
+        playerHand.emptyHand();
+        playerHand.hit();
+        playerHand.hit();
+        dealerHand.emptyHand();
+        dealerHand.hit();
+        dealerHand.hit(true);
+        paintHands();
         finished = false;
     };
     
-    document.getElementById("count-dealer").innerHTML = dealerHand.getScore();
-    document.getElementById("count-player").innerHTML = playerHand.getScore();
+    startGame();
     document.getElementById("hit").addEventListener('click', function () {
         if (finished) {
-            restartGame();
+            startGame();
+            return;
         }
         playerHand.hit();
         var score = playerHand.getScore();
         if (score > 21) {
-            document.getElementById("messaje").innerHTML = "You lose this hand mate!!";
+            document.getElementById("message").innerHTML = "You lose this hand mate!!";
+            dealerHand.showHand(true);
             finished = true;
         }
-        document.getElementById("count-player").innerHTML = score;
+        paintHands(finished);
     });
     document.getElementById("stick").addEventListener('click', function () {
         if (finished) {
-            restartGame();
+            startGame();
         }
-        dealer.makeHand();
-        var dealerScore = dealerHand.getScore();
-        document.getElementById("count-dealer").innerHTML = dealerScore;
+        
+        var dealerScore = dealerHand.getScore(true);
+        while (dealerScore < 21 && dealerScore < playerHand.getScore()) {
+            dealerHand.hit();
+            dealerScore = dealerHand.getScore(true);
+        }
         if (dealerScore > 21 || playerHand.getScore() > dealerScore) {
-            document.getElementById("messaje").innerHTML = "You win, congratulations!!";
+            document.getElementById("message").innerHTML = "You win, congratulations!!";
             finished = true;
         } else {
-            document.getElementById("messaje").innerHTML = "You lose this hand mate!!";
+            document.getElementById("message").innerHTML = "You lose this hand mate!!";
+            dealerHand.showHand(true);
             finished = true;
         }
+        paintHands(finished);
     });
 }());
