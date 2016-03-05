@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>The Black Jack Game Test</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="game.css">
+    </head>
+    <body>
+        <h1>The Black Jack Game Test</h1>
+        <p>Welcome to Las Vegas my brother. Are you ready for some risk?</p>
+        <section class="game-table">
+            <div class="dealer" id="dealer">
+                <p>Dealer</p>
+                <p class="score">Score: <span id="count-dealer"></span></p>
+                <ul class="cards"></ul>
+            </div>
+            <div class="table">
+                <p id="messaje"></p>
+            </div>
+            <div class="player">
+                <ul class="cards"></ul>
+                <p class="score">Score: <span id="count-player"></span></p>
+                <p>Player</p>
+                <button class="hit" id="hit">HIT</button>
+                <button class="stick" id="stick">STICK</button>
+            </div>
+        </section>
+        <script src="game.js"></script>
+    </body>
+</html>

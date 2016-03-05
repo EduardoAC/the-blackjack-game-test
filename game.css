@@ -1,0 +1,40 @@
+/* 
+    Created on : 03-mar-2016, 18:52:47
+    Author     : EduardoAC <Eduardo Aparicio Cardenes at Dream Maker Factory>
+*/
+h1,p{
+    text-align: center;
+    margin-bottom: 5px;
+}
+.game-table{
+    width: 500px;
+    height: 500px;
+    margin: auto;
+}
+.dealer{
+    font-size: 20px;
+    width: 100px;
+    margin: auto;
+}
+
+.player{
+    font-size: 20px;
+    width: 100px;
+    margin: auto;
+}
+
+.table{
+    border-radius: 100px;
+    width: 400px;
+    height: 200px;
+    margin: auto;
+    background: #287B59;
+    border: 1px solid #056B42;
+}
+.table p{
+    text-align: center;
+    margin: 90px 0;
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+}
