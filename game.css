@@ -4,15 +4,16 @@
 */
 
 body{
-    background: #287B59;
+    margin: 0;
+    padding: 0;
+    background-color: #287B59; 
+    color: white;
 }
 h1,p{
     text-align: center;
     margin-bottom: 5px;
 }
 .game-table{
-    /* width: 500px; */
-    /* height: 500px; */
     margin: auto;
 }
 .dealer{
@@ -55,8 +56,8 @@ h1,p{
     /* float: left; */
 }
 .card.hidden{
-    background: -webkit-repeating-linear-gradient(39deg, #606dbc, #606dbc 10px, #465298 10px, #465298 20px);
-    background: repeating-linear-gradient(39deg, #606dbc, #606dbc 10px, #465298 10px, #465298 20px);
+    background: -webkit-repeating-linear-gradient(54deg, #606dbc, #606dbc 10px, #465298 10px, #465298 17px);
+    background: repeating-linear-gradient(54deg, #606dbc, #606dbc 10px, #465298 10px, #465298 17px);
     border: 5px solid white;
     width: 63px;
     height: 87px;
