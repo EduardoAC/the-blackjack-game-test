@@ -1,12 +1,8 @@
 (function () {
     var deck = new Deck();
-
-    deck.createDeck();
-    deck.shuffle();
-
     var playerHand  = new Hand(deck);
     var dealerHand  = new Hand(deck);
-    var finished    = false;
+    var finished    = true;
     
     var paintHands = function(forceVisible){
         document.getElementById("count-dealer").innerHTML = dealerHand.getScore(forceVisible);
@@ -18,21 +14,32 @@
     var startGame = function(){
         deck.createDeck();
         deck.shuffle();
-        document.getElementById("message").innerHTML = "";
         playerHand.emptyHand();
         playerHand.hit();
         playerHand.hit();
         dealerHand.emptyHand();
         dealerHand.hit();
         dealerHand.hit(true);
-        paintHands();
         finished = false;
+        document.getElementById("message").innerHTML = "";
+        toggleDealHitStick(finished);
+        paintHands();
     };
     
-    startGame();
+    var toggleDealHitStick = function(gameOver){
+        if(gameOver){
+            document.getElementById("hit").style.display = "none";
+            document.getElementById("stick").style.display = "none";
+            document.getElementById("deal").style.display = "";
+        }else{
+            document.getElementById("hit").style.display = "";
+            document.getElementById("stick").style.display = "";
+            document.getElementById("deal").style.display = "none";
+        }
+    };
+
     document.getElementById("hit").addEventListener('click', function () {
         if (finished) {
-            startGame();
             return;
         }
         playerHand.hit();
@@ -41,12 +48,13 @@
             document.getElementById("message").innerHTML = "You lose this hand mate!!";
             dealerHand.showHand(true);
             finished = true;
+            toggleDealHitStick(finished);
         }
         paintHands(finished);
     });
     document.getElementById("stick").addEventListener('click', function () {
         if (finished) {
-            startGame();
+            return;
         }
         
         var dealerScore = dealerHand.getScore(true);
@@ -57,11 +65,18 @@
         if (dealerScore > 21 || playerHand.getScore() > dealerScore) {
             document.getElementById("message").innerHTML = "You win, congratulations!!";
             finished = true;
+            toggleDealHitStick(finished);
         } else {
             document.getElementById("message").innerHTML = "You lose this hand mate!!";
             dealerHand.showHand(true);
             finished = true;
+            toggleDealHitStick(finished);
         }
         paintHands(finished);
+    });
+    document.getElementById("deal").addEventListener('click', function () {
+        if(finished){
+            startGame();
+        }
     });
 }());

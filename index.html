@@ -15,24 +15,21 @@ and open the template in the editor.
         <h1>The Black Jack Game Test</h1>
         <p>Welcome to Las Vegas my brother. Are you ready for some risk?</p>
         <section class="game-table">
-            <div class="dealer" id="dealer">
-                <p>Dealer</p>
+            <div class='score'>
+                <p>Dealer: <span id="count-dealer"></span></p>
+                <p>Player: <span id="count-player"></span></p>
             </div>
             <div class="table">
-                <p class="score">Score: <span id="count-dealer"></span></p>
                 <div class="hand" id="dealer-cards"></div>
                 
                 <p class="message" id="message"></p>
                 
                 <div class="hand" id="player-cards"></div>
-                <p class="score">Score: <span id="count-player"></span></p>
             </div>
-            <div class="player">
-                <p>Player</p>
-                <div class="actions">
-                    <button class="hit" id="hit">HIT</button>
-                    <button class="stick" id="stick">STICK</button>
-                </div>
+            <div class="actions">
+                <button class="deal" id="deal">DEAL</button>
+                <button class="hit" id="hit" style="display: none;">HIT</button>
+                <button class="stick" id="stick" style="display: none;">STICK</button>
             </div>
         </section>
         <script src="js/card.class.js"></script>
