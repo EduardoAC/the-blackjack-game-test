@@ -1,16 +1,16 @@
-#The Blackjack Game Test - Eduardo Aparicio Cardenes
+# The Blackjack Game Test - Eduardo Aparicio Cardenes
 
-##Objective
+## Objective
 The purpose of this exercise is to create a simple HTML/JavaScript game of 
 [blackjack](http://en.wikipedia.org/wiki/Blackjack).
 
-##The Game
+## The Game
 Blackjack, also known as twenty-one, is the most widely played casino banking 
 game in the world. Blackjack is a comparing card game between a player and 
 dealer, meaning players compete against the dealer but not against other players. 
 It is played with one or more decks of 52 cards.
 
-##The Rules
+## The Rules
 Your game must follow the following simple set of rules:
 
 - When the game starts, the player is given 2 random cards and the dealer is 
